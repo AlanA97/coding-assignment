@@ -7,7 +7,6 @@ use App\Models\Course;
 use App\Traits\ImageUpload;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 

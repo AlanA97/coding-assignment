@@ -4,11 +4,11 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Courses') }}
             </h2>
-            @can('isAdmin')
-                <a href="{{route('courses.create')}}">
+            @if(Auth::user()->role === 'admin')
+            <a href="{{route('courses.create')}}">
                     <button type="button" class="btn btn-sm btn-success" style="background-color: green">Add New Course</button>
                 </a>
-            @endcan
+            @endif
         </div>
     </x-slot>
 
@@ -24,7 +24,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Description</th>
                             <th scope="col">Created at</th>
-                            @can('isAdmin')
+                            @can('admin')
                                 <th scope="col">Actions</th>
                             @endcan
                         </tr>
@@ -37,14 +37,14 @@
                                 <td>{{$course->email}}</td>
                                 <td>{{$course->description}}</td>
                                 <td>{{$course->getCreatedAtColumn()->format('Y/m/d')}}</td>
-                                @can('isAdmin')
-                                    <td class="d-flex">
+                                @if(Auth::user()->role === 'admin')
+                                <td class="d-flex">
                                         <a href="{{route('courses.edit', ['course' => $course->id] )}}">
                                             <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                                         </a>
                                         <x-delete-button :route="route('courses.destroy', ['course' => $course->id] )"></x-delete-button>
                                     </td>
-                                @endcan
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
