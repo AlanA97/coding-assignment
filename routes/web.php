@@ -24,12 +24,12 @@ Route::middleware('auth')->group(static function(){
         return view('dashboard');
     })->name('dashboard');
 
-    Route::middleware('admin')->group(function(){
+    Route::middleware('can:isAdmin')->group(function(){
         Route::resource('users', UserController::class)->except('show');
     });
 
     Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
-    Route::middleware('admin')->group(function() {
+    Route::middleware('can:isAdmin')->group(function() {
         Route::resource('courses', CourseController::class)->except('show', 'index');
     });
 });
