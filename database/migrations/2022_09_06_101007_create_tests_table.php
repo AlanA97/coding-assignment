@@ -12,16 +12,11 @@ return new class extends Migration
      * @return void
      */
     public function up(): void{
-        Schema::create('users', static function (Blueprint $table) {
+        Schema::create('tests', static function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->text('description')->nullable();
             $table->string('image_path')->nullable();
-            $table->enum('role',  ['learner', 'admin'])->default('learner');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      * @return void
      */
     public function down(): void{
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tests');
     }
 };
