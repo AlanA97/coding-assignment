@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ Route::middleware('auth')->group(static function(){
 
     Route::middleware('can:isAdmin')->group(function(){
         Route::resource('users', UserController::class)->except('show');
+    });
+
+    Route::middleware('can:isAdmin')->group(function() {
+        Route::resource('courses', CourseController::class)->except('show');
     });
 });
 

@@ -26,14 +26,19 @@ class UserController extends Controller{
     }
 
     public function store(CreateUserRequest $request): RedirectResponse{
+        $validatedData = $request->except(['image', 'password']);
+
         if($file = $request->file('image')){
             $imagePath = $this->uploads($file, 'images/');
+            $validatedData = [
+                ...$validatedData,
+                'image_path' => $imagePath
+            ];
         }
 
         User::create([
-            ...$request->except(['image', 'password']),
+            ...$validatedData,
             'password' => Hash::make($request->safe()['password']),
-            'image_path' => $imagePath ?? null,
             'email_verified_at' => Carbon::now()
         ]);
 
