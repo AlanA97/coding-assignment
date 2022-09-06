@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', static function () {
+    return redirect('/dashboard');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware('auth')->group(static function(){
+    Route::get('/dashboard', static function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::middleware('can:isAdmin')->group(function(){
+        Route::resource('users', UserController::class)->except('show');
+    });
+});
 
 require __DIR__.'/auth.php';
