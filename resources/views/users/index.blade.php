@@ -12,7 +12,7 @@
 
     <section class="mt-5">
         <div class="container">
-            <div class="row">
+            <div class="row pb-5">
                 <div class="col-md-12">
                     <table class="table">
                         <thead>

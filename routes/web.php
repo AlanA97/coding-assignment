@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,12 +27,12 @@ Route::middleware('auth')->group(static function(){
 
     Route::middleware('can:isAdmin')->group(function(){
         Route::resource('users', UserController::class)->except('show');
+        Route::resource('courses', CourseController::class)->except('show', 'index');
+        Route::resource('tests', TestController::class)->except('show', 'index');
     });
 
     Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
-    Route::middleware('can:isAdmin')->group(function() {
-        Route::resource('courses', CourseController::class)->except('show', 'index');
-    });
+    Route::get('tests', [TestController::class, 'index'])->name('tests.index');
 });
 
 require __DIR__.'/auth.php';

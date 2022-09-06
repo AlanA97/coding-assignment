@@ -74,9 +74,11 @@ class UserController extends Controller{
 
     public function destroy(User $user): RedirectResponse{
         try{
-            if(Storage::delete($user->image_path)){
-                $user->delete();
+            if($user->image_path) {
+                Storage::delete($user->image_path);
             }
+
+            $user->delete();
 
             return redirect()->back()->with('message', 'User successfully deleted!');
         } catch(QueryException $queryException){

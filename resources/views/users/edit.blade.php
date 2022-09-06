@@ -60,7 +60,9 @@
                     <div class="form-group mb-2">
                         <label for="image">Image</label>
                         <input type="file" class="form-control-file mb-2" name="image" id="image">
-                        <img src="{{@App::make('url')->to('/').'/'. $user->image_path }}" style="height: 100px;width:100px;" />
+                        @if($user->image_path)
+                            <img src="{{@App::make('url')->to('/').'/'. $user->image_path }}" style="height: 100px;width:100px;"  alt=""/>
+                        @endif
                     </div>
                     <div class="form-group mb-2">
                         <label for="description">Description</label>

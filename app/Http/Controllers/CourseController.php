@@ -60,9 +60,12 @@ class CourseController extends Controller
 
     public function destroy(Course $course): RedirectResponse{
         try{
-            if(Storage::delete($course->image_path)){
-                $course->delete();
+            if($course->image_path) {
+                Storage::delete($course->image_path);
             }
+
+            $course->delete();
+
 
             return redirect()->back()->with('message', 'Course successfully deleted!');
         } catch(QueryException $queryException){
