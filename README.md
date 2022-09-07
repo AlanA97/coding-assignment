@@ -1,5 +1,6 @@
 ## Setup
 
+ - configure the database
  - composer install
  - npm install
  - php artisan storage:link

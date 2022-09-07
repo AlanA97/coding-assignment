@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
-use App\Traits\ImageUpload;
+use App\Traits\Media;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller{
 
-    use ImageUpload;
+    use Media;
 
     public function index(): View{
         return view('users.index', ['users' => User::paginate(20)]);
@@ -29,7 +29,7 @@ class UserController extends Controller{
         $validatedData = $request->except(['image', 'password']);
 
         if($file = $request->file('image')){
-            $imagePath = $this->uploads($file, 'images/');
+            $imagePath = $this->uploadImage(file: $file, path: 'images/user/');
             $validatedData = [
                 ...$validatedData,
                 'image_path' => $imagePath
@@ -53,7 +53,7 @@ class UserController extends Controller{
         $validatedData = $request->except(['image', 'password']);
 
         if($file = $request->file('image')){
-            $imagePath = $this->uploads($file, 'images/');
+            $imagePath = $this->uploadImage(file: $file, path: 'images/user/');
             $validatedData = [
                 ...$validatedData,
                 'image_path' => $imagePath ?? null

@@ -4,6 +4,14 @@
     <list default="true" id="e76cb45f-891f-467d-8fa6-5a134ed3c125" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CourseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Course/CourseRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/User/CreateUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/TestRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Test/TestRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/User/UpdateUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/ImageUpload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/Media.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +163,7 @@
       <recent name="$PROJECT_DIR$/resources/views/coursers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Requests/Course" />
       <recent name="$PROJECT_DIR$/resources/css" />
     </key>
   </component>
@@ -175,7 +184,9 @@
       <workItem from="1662457430837" duration="501000" />
       <workItem from="1662457939906" duration="15205000" />
       <workItem from="1662475087128" duration="5669000" />
-      <workItem from="1662480906905" duration="183000" />
+      <workItem from="1662480906905" duration="198000" />
+      <workItem from="1662535389479" duration="2140000" />
+      <workItem from="1662537568591" duration="133000" />
     </task>
     <servers />
   </component>

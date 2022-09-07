@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CourseRequest;
+use App\Http\Requests\Course\CourseRequest;
 use App\Models\Course;
-use App\Traits\ImageUpload;
+use App\Traits\Media;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +12,7 @@ use Illuminate\View\View;
 
 class CourseController extends Controller
 {
-    use ImageUpload;
+    use Media;
 
     public function index(): View{
         return view('coursers.index', ['courses' => Course::paginate(20)]);
@@ -26,7 +26,7 @@ class CourseController extends Controller
         $validatedData = $request->except(['image']);
 
         if($file = $request->file('image')){
-            $imagePath = $this->uploads($file, 'images/');
+            $imagePath = $this->uploadImage(file: $file, path: 'images/course/');
             $validatedData = [
                 ...$validatedData,
                 'image_path' =>  $imagePath
@@ -46,7 +46,7 @@ class CourseController extends Controller
         $validatedData = $request->except(['image']);
 
         if($file = $request->file('image')){
-            $imagePath = $this->uploads($file, 'images/');
+            $imagePath = $this->uploadImage(file: $file, path: 'images/course/');
             $validatedData = [
                 ...$validatedData,
                 'image_path' => $imagePath
